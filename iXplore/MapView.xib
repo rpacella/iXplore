@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="iXplore" customModuleProvider="target">
+            <connections>
+                <outlet property="mapView" destination="1WJ-NS-cOt" id="CIn-mg-akO"/>
+                <outlet property="tableView" destination="el7-Ls-PnH" id="Jbp-3Y-CdP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1WJ-NS-cOt">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="333"/>
+                </mapView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="el7-Ls-PnH">
+                    <rect key="frame" x="0.0" y="363" width="600" height="237"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufx-eT-Vai">
+                    <rect key="frame" x="0.0" y="333" width="600" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="New Entry">
+                        <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="newEntryButtonPressed:" destination="-1" eventType="touchUpInside" id="yq1-Um-dmP"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Ufx-eT-Vai" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3dy-VP-zDu"/>
+                <constraint firstItem="1WJ-NS-cOt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="89o-1u-YoN"/>
+                <constraint firstItem="el7-Ls-PnH" firstAttribute="top" secondItem="Ufx-eT-Vai" secondAttribute="bottom" id="8Ua-QV-Wb6"/>
+                <constraint firstAttribute="bottom" secondItem="el7-Ls-PnH" secondAttribute="bottom" id="AGF-Mr-oLy"/>
+                <constraint firstAttribute="trailing" secondItem="1WJ-NS-cOt" secondAttribute="trailing" id="SKh-5F-bJD"/>
+                <constraint firstItem="el7-Ls-PnH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="U4p-1r-x96"/>
+                <constraint firstAttribute="bottom" secondItem="1WJ-NS-cOt" secondAttribute="bottom" multiplier="1.8" constant="1" id="g59-G3-juA"/>
+                <constraint firstAttribute="trailing" secondItem="Ufx-eT-Vai" secondAttribute="trailing" id="hhR-cd-kpm"/>
+                <constraint firstItem="1WJ-NS-cOt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vBx-Os-Vbb"/>
+                <constraint firstItem="Ufx-eT-Vai" firstAttribute="top" secondItem="1WJ-NS-cOt" secondAttribute="bottom" id="vUk-mU-8yy"/>
+                <constraint firstAttribute="trailing" secondItem="el7-Ls-PnH" secondAttribute="trailing" id="zv3-Ah-cA7"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
