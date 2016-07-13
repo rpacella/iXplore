@@ -34,5 +34,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>LSHasLocalizedDisplayName</key>
+	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to make a dope journal.</string>
 </dict>
 </plist>

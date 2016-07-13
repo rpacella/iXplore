@@ -9,7 +9,9 @@
 import UIKit
 import MapKit
 
-class NewEntryViewController: UIViewController {
+class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
+
+    let locationManager = CLLocationManager()
 
     // IBOutlets
     
@@ -26,6 +28,41 @@ class NewEntryViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+
+        
+        //Error alert for unauthorized : deeplink to settings
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Denied {
+            let errorMessage : String = "Please change location settings in Settings"
+            let errorAlert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+            let dismissErrorAlert = UIAlertAction(title: "Dismiss", style: .Default, handler: { (action) in })
+            let settingsErrorAlert = UIAlertAction(title: "Settings", style: .Default, handler: { action in UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+            })
+            errorAlert.addAction(dismissErrorAlert)
+            errorAlert.addAction(settingsErrorAlert)
+            
+            self.presentViewController(errorAlert, animated: true, completion: nil)
+        }
+        
+
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+
+        let location = newLocation as CLLocation
+        latField.text = String(location.coordinate.latitude)
+        longField.text = String(location.coordinate.longitude)
+        
+        locationManager.stopUpdatingLocation()
+    }
+
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
         if latField.text == "" || longField.text == "" || titleField.text == "" {

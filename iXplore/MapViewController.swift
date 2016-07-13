@@ -8,36 +8,39 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var tableView2: UITableViewCell!
-
+class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-       
-        
+        mapView.showsUserLocation = true
+
     }
     
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
          mapView.addAnnotations(JournalEntryController.sharedInstance.entries)
-    }
 
+    }
+    
+   
+    
     @IBAction func newEntryButtonPressed(sender: AnyObject) {
         
         let newEntryViewController = NewEntryViewController(nibName: "NewEntry", bundle: nil)
         self.presentViewController(newEntryViewController, animated: true, completion: nil)
+
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return JournalEntryController.sharedInstance.entries.count
     }
@@ -56,6 +59,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegat
         let region = MKCoordinateRegion(center: entryArray[indexPath.row].coordinate, span: span)
         mapView.setRegion(region, animated: true)
         
-    }
+}
 
 }
